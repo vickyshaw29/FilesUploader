@@ -1,5 +1,6 @@
 import React, { useState ,useEffect} from 'react'
 import { Card, Col, Container, Nav, Navbar, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 const Header = () => {
@@ -12,8 +13,8 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                       
-                        <Nav className="">
-                           
+                        <Nav className="ml-auto" style={{color:'#fff'}}>
+                           <Link style={{color:'#fff'}} to='/files'><Nav.Item>Images</Nav.Item></Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

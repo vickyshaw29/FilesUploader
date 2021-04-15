@@ -2,8 +2,10 @@ import React, { Fragment, useState } from 'react'
 import axios from 'axios'
 import Message from './Message'
 import Loader from './Loader'
-import { Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { useHistory } from "react-router-dom";
 const UploadScreen = () => {
+    let history = useHistory();
     const [imgCollection, setimgCollection] = useState('')
     const [loading, setloading] = useState(false)
     const [msg, setmsg] = useState('')
@@ -25,10 +27,12 @@ const UploadScreen = () => {
                 setmsg(res.data.error && res.data.error)
                setloading(false)
             } else {
+                history.push('/files')
                 console.log(res.data)
                 setmsg(res.data.message && res.data.message)
                 setimgCollection('')
                 setloading(false)
+                
             }
 
         })
@@ -37,7 +41,8 @@ const UploadScreen = () => {
 
     }
     return (
-        <Container center>
+        
+        <Container fluid>
             <Row className="justify-content-center md-center sm-center xs-center mr-auto">
                 <Col xs={12} md={6} sm={12}>
                     <Fragment>
@@ -59,6 +64,7 @@ const UploadScreen = () => {
                                     <div className="">
                                         <button className="btn btn-primary" type="submit">Upload</button>
                                     </div>
+                                    
                                 </Form>
                             </Card>
 
