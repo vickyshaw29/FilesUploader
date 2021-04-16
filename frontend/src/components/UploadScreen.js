@@ -21,7 +21,7 @@ const UploadScreen = () => {
         for (const key of Object.keys(imgCollection)) {
             formData.append('imgCollection', imgCollection[key])
         }
-        axios.post("http://localhost:7000/api/upload-images", formData, {
+        axios.post("/api/upload-images", formData, {
         }).then(res => {
             if (res.data.error) {
                 setmsg(res.data.error && res.data.error)

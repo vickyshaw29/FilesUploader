@@ -6,7 +6,7 @@ const Files = ({ history }) => {
     const [users, setusers] = useState([])
     useEffect(() => {
         const fetchData = async () => {
-            const { data } = await axios.get('http://localhost:7000/api')
+            const { data } = await axios.get('/api')
             setusers(data.users)
         }
         fetchData()

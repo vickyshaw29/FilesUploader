@@ -28,6 +28,20 @@ app.use(function (err, req, res, next) {
     if (!err.statusCode) err.statusCode = 500;
     res.status(err.statusCode).send(err.message);
 });
+// deploying 
+if(process.env.NODE_ENV==='production'){
+    app.use(express.static(path.join(__dirname,'/build')))
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname, 'build','index.html'))
+    }) 
+}else{
+    app.get('/',(req,res)=>{
+        res.send('API is running')
+    })
+}
+
+
+
 
 mongoose.connect(process.env.MONGODB_URL,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(()=>app.listen(process.env.PORT,()=>console.log('running on port 8000')))
